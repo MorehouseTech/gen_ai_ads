@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import { Typography, Button, Box, IconButton, Container, Grid, AppBar, Toolbar, TextField, InputAdornment } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { Typography, Box, IconButton, Container, Grid, AppBar, Toolbar, } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import MicIcon from '@mui/icons-material/Mic';
-import VideoCallIcon from '@mui/icons-material/VideoCall';
-import HomeIcon from '@mui/icons-material/Home';
-import ExploreIcon from '@mui/icons-material/Explore';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import HistoryIcon from '@mui/icons-material/History';
-import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
-import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
-import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
-import Hulu from './AIinfo';
+import new3 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.49.19 PM.png';
+import new4 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.50.17 PM.png';
+import new1 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.50.43 PM.png';
+import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.51.05 PM.png';
+
 
 const YouTube = () => {
     const [videos, setVideos] = useState([
-        { id: 1, title: 'I went to the Pokemon Cafe!', image: gardenImage, category: 'Entertainment', views: '2.8M', timeAgo: '13 days ago', duration: '7:41', channel: 'PokemonFan' },
-        { id: 2, title: 'I played Pokemon, but with 50+ New Types', image: bathroomImage, category: 'Gaming', views: '7.6M', timeAgo: '2 months ago', duration: '31:39', channel: 'GameMaster' },
-        { id: 3, title: 'I got a cat.', image: gardenImage, category: 'Vlog', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'LifeUpdates' },
-        { id: 4, title: 'They put me in a video game...', image: bathroomImage, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife' }
+        { id: 1, title: 'I went to the Pokemon Cafe!', image: new3, category: 'Entertainment', views: '2.8M', timeAgo: '13 days ago', duration: '7:41', channel: 'PokemonFan' },
+        { id: 2, title: 'I played Pokemon, but with 50+ New Types', image: new4, category: 'Gaming', views: '7.6M', timeAgo: '2 months ago', duration: '31:39', channel: 'GameMaster' },
+        { id: 3, title: 'I got a cat.', image: new1, category: 'Vlog', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'LifeUpdates' },
+        { id: 4, title: 'They put me in a video game...', image: new2, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife' }
     ]);
     
     const navigate = useNavigate();
-    const handleNavigate = (title, category) => {
+    const handleNavigate = (title: string, category: string) => {
         navigate(`/adPage/${title}/${category}`);
     };
     
@@ -64,124 +55,13 @@ const YouTube = () => {
                                 </Typography>
                             </Box>
                         </Box>
-
-                        {/* Right section with icons */}
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <IconButton>
-                                <VideoCallIcon />
-                            </IconButton>
-                            <Button variant="contained" startIcon={<VideoCallIcon />}sx={{ mx: 2, 
-                                    textTransform: 'none',
-                                    bgcolor: 'white',
-                                    color: 'black',
-                                    boxShadow: 'none',
-                                    border: '1px solid #ccc',
-                                    '&:hover': { bgcolor: '#f2f2f2', boxShadow: 'none' }
-                                }}
-                            >
-                                Create
-                            </Button>
-                            <IconButton sx={{ position: 'relative' }}>
-                                <NotificationsIcon />
-                                <Box sx={{ 
-                                    position: 'absolute', 
-                                    top: 4, 
-                                    right: 4, 
-                                    bgcolor: 'red', 
-                                    color: 'white', 
-                                    borderRadius: '50%', 
-                                    width: 18, 
-                                    height: 18,
-                                    fontSize: '0.7rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    9+
-                                </Box>
-                            </IconButton>
-                            <Box sx={{ 
-                                width: 32, 
-                                height: 32, 
-                                borderRadius: '50%', 
-                                bgcolor: '#6495ED',
-                                ml: 2,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: 'white'
-                            }}>
-                                A
-                            </Box>
-                        </Box>
                     </Toolbar>
                 </Container>
             </AppBar>
 
             {/* Main content area */}
             <Box sx={{ display: 'flex' }}>
-                {/* Left sidebar */}
-                <Box sx={{ 
-                    width: 240, 
-                    bgcolor: 'white', 
-                    borderRight: '1px solid #e0e0e0',
-                    height: 'calc(100vh - 64px)',
-                    overflow: 'auto',
-                    py: 1
-                }}>
-                    {menuItems.map((item, index) => (
-                        <Button
-                            key={index}
-                            startIcon={
-                                index === 0 ? <HomeIcon /> : 
-                                index === 1 ? <ExploreIcon /> : 
-                                index === 2 ? <SubscriptionsIcon /> : 
-                                <VideoLibraryIcon />
-                            }
-                            sx={{ 
-                                py: 1, 
-                                px: 2, 
-                                justifyContent: 'flex-start', 
-                                color: 'black',
-                                width: '100%',
-                                textTransform: 'none',
-                                borderRadius: 0,
-                                '&:hover': { bgcolor: '#f2f2f2' }
-                            }}
-                        >
-                            {item}
-                        </Button>
-                    ))}
-                    
-                    <Box sx={{ my: 2, borderBottom: '1px solid #e0e0e0' }}></Box>
-                    
-                    <Typography variant="subtitle2" sx={{ px: 3, py: 1, fontWeight: 'bold' }}>
-                        You
-                    </Typography>
-                    
-                    {secondaryMenuItems.map((item, index) => (
-                        <Button
-                            key={index}
-                            startIcon={
-                                index === 0 ? <HistoryIcon /> : 
-                                index === 1 ? <PlaylistPlayIcon /> : 
-                                <VideoLibraryIcon />
-                            }
-                            sx={{ 
-                                py: 1, 
-                                px: 2, 
-                                justifyContent: 'flex-start', 
-                                color: 'black',
-                                width: '100%',
-                                textTransform: 'none',
-                                borderRadius: 0,
-                                '&:hover': { bgcolor: '#f2f2f2' }
-                            }}
-                        >
-                            {item}
-                        </Button>
-                    ))}
-                </Box>
+              
 
                 {/* Main content */}
                 <Box sx={{ 
@@ -190,35 +70,7 @@ const YouTube = () => {
                     height: 'calc(100vh - 64px)', 
                     overflow: 'auto' 
                 }}>
-                    {/* Nav tabs */}
-                    <Box sx={{ 
-                        display: 'flex', 
-                        borderBottom: '1px solid #e0e0e0',
-                        pb: 1,
-                        mb: 2
-                    }}>
-                        {mainNavItems.map((item, index) => (
-                            <Button
-                                key={index}
-                                sx={{ 
-                                    mx: 1, 
-                                    color: index === 0 ? 'black' : '#606060',
-                                    fontWeight: index === 0 ? 'bold' : 'normal',
-                                    textTransform: 'none',
-                                    minWidth: 'auto',
-                                    borderBottom: index === 0 ? '3px solid black' : 'none',
-                                    borderRadius: 0,
-                                    pb: 1
-                                }}
-                            >
-                                {item}
-                            </Button>
-                        ))}
-                        <Box sx={{ flexGrow: 1 }}></Box>
-                        <IconButton>
-                            <SearchIcon />
-                        </IconButton>
-                    </Box>
+                
 
                     <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
                         Videos

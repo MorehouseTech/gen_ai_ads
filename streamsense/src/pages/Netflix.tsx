@@ -7,17 +7,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
 import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
 import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
-import Hulu from './AIinfo';
 
-interface Video {
-    id: number;
-    title: string;
-    image: string;
-    category: string;
-}
 
 const Netflix = () => {
-    const [videos, setVideos] = useState<Video[]>([
+    const [videos, setVideos] = useState([
         { id: 1, title: 'Avatar', image: gardenImage, category: 'Fantasy' },
         { id: 2, title: 'Stranger Things', image: bathroomImage, category: 'Drama' }
     ]);
