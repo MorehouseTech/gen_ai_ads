@@ -4,6 +4,7 @@ import Hulu from './pages/Hulu';
 import AIinfo from './pages/AIinfo';
 import './App.css';
 import Home from './pages/Home';
+import AdPage from './pages/AdPage';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Route path="/AIinfo/:title/:category" element={<AIinfo />} />
       <Route path="/Youtube" element={<div>YouTube Coming Soon</div>} />
       <Route path="/AmazonPrime" element={<div>Amazon Prime Coming Soon</div>} />
+      <Route path="/adPage/:title/:category" element={<AdPage />} />
+      <Route path="/AIinfo/:title/:category/:company" element={<AIinfo />} />
     </Routes>
   );
 }
