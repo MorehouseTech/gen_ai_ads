@@ -7,6 +7,7 @@ import '@fontsource/roboto/300.css';
 import Netflix from './pages/Netflix.tsx'
 import AIinfo from './pages/AIinfo.tsx'
 import AdPage from './pages/AdPage.tsx' 
+import Youtube from './pages/Youtube.tsx'
 //router imports
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     {
       path: "/AdPage/:title/:category",
       element: <AdPage />
+    },
+    {
+      path: "/Youtube",
+      element: <Youtube />
     }
 
 ]);
