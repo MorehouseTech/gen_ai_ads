@@ -37,8 +37,12 @@ const Netflix = () => {
     const filteredVideos = videos.filter(video => activeCategory === 'All' || video.category === activeCategory);
 
     return (
+        
         <Container maxWidth="md" sx={{ p: 0, bgcolor: '#141414', height: '100vh', display: 'flex', flexDirection: 'column', color: 'white' }}>
             {/* Category Filter */}
+            <button onClick={() => navigate('/')}> // Go back to platform selection
+                Go to Home
+            </button>
             <AppBar position="static" sx={{ bgcolor: '#111' }}>
           <Toolbar>
             <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: 'red' }}>
