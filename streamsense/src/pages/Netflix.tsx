@@ -36,8 +36,12 @@ const Netflix = () => {
     }
 
     return (
-        <Box sx={{ bgcolor: '#141414', minHeight: '100vh', width: '100vw',color: 'white',position: 'fixed',top: 0,left: 0,right: 0,bottom: 0}}>
+        
+        <Box sx={{ bgcolor: '#141414', minHeight: '100vh', width: '100%', color: 'white' }}>
             {/* Netflix Header */}
+            <button onClick={() => navigate('/')}> // Go back to platform selection
+                Go to Home
+            </button>
             <AppBar position="static" sx={{ bgcolor: 'transparent', boxShadow: 'none', py: 1 }}>
                 <Container maxWidth="xl">
                     <Toolbar sx={{ justifyContent: 'space-between' }}>
