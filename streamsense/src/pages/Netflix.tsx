@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { Typography, Button, Box, IconButton, Container, Grid,  AppBar, Toolbar, TextField} from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import gardenImage from '../assets/Screen Shot 2025-03-04 at 1.56.56 AM.png';
-import bathroomImage from '../assets/Screen Shot 2025-03-04 at 1.57.28 AM.png';
-import Hulu from './Hulu';
+import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
+import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
+import Hulu from './AIinfo';
 // const navigate = useNavigate();
 //     const passed = 12;
 
@@ -29,7 +29,7 @@ const Netflix = () => {
     ]);
     const navigate = useNavigate();
     const handleNavigate = (title: string, category: string) => {
-                navigate(`/AIinfo/${title}/${category}`);
+                navigate(`/adPage/${title}/${category}`);
             };
     const [activeCategory, setActiveCategory] = useState('All');
     const categories = ['All', 'Garden', 'Bathroom'];

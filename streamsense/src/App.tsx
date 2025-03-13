@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Netflix from './pages/Netflix';
-import Hulu from './pages/Hulu';
+import AdPage from './pages/adPage';
 import AIinfo from './pages/AIinfo';
 import './App.css';
 
@@ -8,8 +8,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Netflix />} />
-      <Route path="/Hulu/:passed" element={<Hulu />} />
-      <Route path="/AIinfo/:passed" element={<AIinfo />} />
+      <Route path="/adPage/:title/:category" element={<AdPage />} />
+      <Route path="/AIinfo/:title/:category/:company" element={<AIinfo />} />
     </Routes>
   );
 }
