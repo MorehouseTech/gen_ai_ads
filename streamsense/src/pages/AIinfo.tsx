@@ -1,21 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { Container, Typography, Box } from '@mui/material';
 
-type RouteParams = {
-  title?: string;
-  category?: string;
-  company?: string;
-  [key: string]: string | undefined;
-};
+
 
 const AIinfo = () => {
-    const { title, category, company } = useParams<RouteParams>();
+    const { title, category, company } = useParams();
     
     return (
       <Container maxWidth="md">
         <Box sx={{ mt: 4, p: 3, bgcolor: '#f5f5f5', borderRadius: 2 }}>
           <Typography variant="h4" gutterBottom>
-            {title || 'Untitled'}
+            Title: {title || 'Untitled'}
           </Typography>
           <Typography variant="subtitle1" color="primary" gutterBottom>
             Category: {category || 'Uncategorized'}
