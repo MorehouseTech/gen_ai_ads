@@ -48,7 +48,7 @@ const AIinfo = () => {
     }
    
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent form submission from refreshing the page
     setDisplayText(inputText); // Update the displayed text with the current input value
   };
