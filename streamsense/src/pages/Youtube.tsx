@@ -11,23 +11,17 @@ import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.51.05 PM.png';
 
 const YouTube = () => {
     const videos = [
-        { id: 1, title: 'I went to the Pokemon Cafe!', image: new3, category: 'Entertainment', views: '2.8M', timeAgo: '13 days ago', duration: '7:41', channel: 'PokemonFan' },
-        { id: 2, title: 'I played Pokemon, but with 50+ New Types', image: new4, category: 'Gaming', views: '7.6M', timeAgo: '2 months ago', duration: '31:39', channel: 'GameMaster' },
-        { id: 3, title: 'I got a cat.', image: new1, category: 'Vlog', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'LifeUpdates' },
-        { id: 4, title: 'They put me in a video game...', image: new2, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife' }
+        { id: 1, title: 'I Attempted my First Pokemon Nuzlocke', image: new3, category: 'Entertainment', views: '95M', timeAgo: '5 Years ago', duration: '17:49', channel: 'JaidenAnimation' },
+        { id: 2, title: 'I got a cat.', image: new4, category: 'Gaming', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'JaidenAnimation' },
+        { id: 3, title: 'My Birds Laid Eggs.', image: new1, category: 'Vlog', views: '15M', timeAgo: '1 year ago', duration: '16:09', channel: 'JaidenAnimation' },
+        { id: 4, title: 'Speedrunning a rhythm game is hard', image: new2, category: 'Gaming', views: '16M', timeAgo: '2 Years ago', duration: '14:31', channel: 'JaidenAnimation' }
     ];
     
-    // Override body background color to ensure entire page is white
     useEffect(() => {
-        // Save the original background color
         const originalBodyBg = document.body.style.backgroundColor;
         const originalHtmlBg = document.documentElement.style.backgroundColor;
-        
-        // Set white background for the entire page
         document.body.style.backgroundColor = '#ffffff';
         document.documentElement.style.backgroundColor = '#ffffff';
-        
-        // Restore original background color when component unmounts
         return () => {
             document.body.style.backgroundColor = originalBodyBg;
             document.documentElement.style.backgroundColor = originalHtmlBg;
@@ -60,12 +54,12 @@ const YouTube = () => {
                 padding: 0,
                 boxSizing: 'border-box',
                 overflow: 'hidden',
-                position: 'fixed', // Fix position to cover the entire viewport
+                position: 'fixed', 
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                zIndex: 1 // Ensure it's above any other elements
+                zIndex: 1 
             }}
         >
             {/* YouTube Header */}
@@ -82,7 +76,7 @@ const YouTube = () => {
                                     <Box component="span" sx={{ bgcolor: 'red', color: 'white', py: 0.5, px: 1, borderRadius: 1, mr: 1, fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         ▶
                                     </Box>
-                                    Premium
+                                    Jaiden Animation
                                 </Typography>
                             </Box>
                         </Box>
@@ -121,7 +115,7 @@ const YouTube = () => {
                                             '& .play-button': { opacity: 1 } 
                                         }, 
                                     }}
-                                    onClick={() => handleNavigate(video.title, video.category)}
+                                    onClick={() => handleNavigate(video.title, video.channel)}
                                 >
                                     <img 
                                         src={video.image} 

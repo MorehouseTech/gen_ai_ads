@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Typography, Box, Button, Stack, Avatar, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Container, Typography, Box, Button, Stack, Avatar, Select, MenuItem, FormControl, InputLabel, Grid } from '@mui/material';
 import { useState } from 'react';
 import nflLogo from '../assets/newAssets/5th-NFL-logo.png';
 import bbyLogo from '../assets/newAssets/636596669293144926-BBY-on-blue-1 copy.png';
@@ -53,8 +53,6 @@ const AdPage = () => {
             ...prev,
             [company]: value
         }));
-        
-        // Only navigate if we have all required parameters
         if (title && category) {
             handleNavigate(title, category, company, value);
         }
@@ -74,40 +72,51 @@ const AdPage = () => {
 
     return (
         <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box sx={{ bgcolor: '#141414', minHeight: '50vh', width: '100%', color: 'white', mb: 2, p: 4 }}>
-                <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: 4, display: 'flex', justifyContent: 'center' }}>
+            <Typography variant="h4" sx={{ textAlign: 'center', mb: 4, mt: 2 }}>Pick the company you want to see an ad for</Typography>
+            <Box sx={{ bgcolor: '#141414', width: '100%', color: 'white', p: 4, borderRadius: 2 }}>
+                <Grid container spacing={2}>
                     {Object.entries(companyProducts).map(([company, products]) => (
-                        <Box key={company} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-                            <Avatar 
-                                src={logoMapping[company as keyof typeof logoMapping]} 
-                                sx={{ 
-                                    width: 80, 
-                                    height: 80, 
-                                    cursor: 'pointer', 
-                                    bgcolor: 'white', 
-                                    '& img': { 
-                                        objectFit: 'contain', 
-                                        p: 1 
-                                    } 
-                                }} 
-                            />
-                            <FormControl size="small" sx={{ minWidth: 120, bgcolor: 'white', borderRadius: 1 }}>
-                                <Select
-                                    value={selectedProducts[company as keyof typeof selectedProducts]}
-                                    onChange={(e) => handleProductChange(company, e.target.value)}
-                                    displayEmpty
-                                >
-                                    <MenuItem value="" disabled>Select {company}</MenuItem>
-                                    {products.map((product) => (
-                                        <MenuItem key={product} value={product}>{product}</MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
+                        <Grid item xs={12} key={company}>
+                            <Box sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                gap: 2,
+                                bgcolor: 'rgba(255,255,255,0.05)',
+                                p: 2,
+                                borderRadius: 1,
+                                '&:hover': {
+                                    bgcolor: 'rgba(255,255,255,0.1)'
+                                }
+                            }}>
+                                <Avatar 
+                                    src={logoMapping[company as keyof typeof logoMapping]} 
+                                    sx={{ 
+                                        width: 60, 
+                                        height: 60, 
+                                        bgcolor: 'white', 
+                                        '& img': { 
+                                            objectFit: 'contain', 
+                                            p: 1 
+                                        } 
+                                    }} 
+                                />
+                                <FormControl fullWidth size="small" sx={{ bgcolor: 'white', borderRadius: 1 }}>
+                                    <Select
+                                        value={selectedProducts[company as keyof typeof selectedProducts]}
+                                        onChange={(e) => handleProductChange(company, e.target.value)}
+                                        displayEmpty
+                                    >
+                                        <MenuItem value="" disabled>Select {company} Product</MenuItem>
+                                        {products.map((product) => (
+                                            <MenuItem key={product} value={product}>{product}</MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </Grid>
                     ))}
-                </Stack>
+                </Grid>
             </Box>
-            <Typography variant="h4" sx={{ textAlign: 'center' }}>Pick the company you want to see an ad for</Typography>
         </Container>
     );
 };
