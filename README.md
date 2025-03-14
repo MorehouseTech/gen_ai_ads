@@ -5,7 +5,7 @@ Aren Egwuekwe, Ahmed Kiel-Kamil, Joshua Waters, Mark Ross Jeremy Samuel, Jaire R
 
 ## 🚀 Live Demo  
 Experience StreamSense in action:   
-https://streamsenseai.com
+https://morehousetech.github.io/gen_ai_ads/
 
 How to use the solution:  
 [Demo Video](https://drive.google.com/file/d/1DtkumyfkYV46BCr4kXzid3GMn-vKK3TW/view?usp=sharing)
