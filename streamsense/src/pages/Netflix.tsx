@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Typography, Button, Box, IconButton, Container, Grid, AppBar, Toolbar } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
-import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
+import CloseIcon from '@mui/icons-material/Close';
+import new1 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
+import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
 
 
 const Netflix = () => {

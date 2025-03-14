@@ -14,19 +14,19 @@ const AIinfo = () => {
             setLoading(true);
             setError("");
             console.log('Sending request with data:', { title, category, company, product });
-            // const response = await fetch("https://feec-35-227-16-215.ngrok-free.app/generate", {
-            const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+            const response = await fetch("https://5971-34-125-134-230.ngrok-free.app/generate", {
                 method: "POST",
                 body: JSON.stringify({
-                    media: title,
-                    media_co: category,
-                    company: company,
-                    product: product
+                    "media": title,
+                    "media_co": category,
+                    "company": company,
+                    "product": product
                 }),
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "ngrok-skip-browser-warning": "true"
+                    "ngrok-skip-browser-warning": "true",
+                    "Access-Control-Allow-Origin": "*"
                 },
                 mode: 'cors'
             });
