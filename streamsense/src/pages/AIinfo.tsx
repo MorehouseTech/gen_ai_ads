@@ -54,39 +54,21 @@ const AIinfo = () => {
   };
     return (
         <Container>
+            <Typography variant="h4" sx={{ color: 'white', textAlign: 'center', mb: 4, mt: 2 }}>Place Link Here</Typography>
              <Paper elevation={3} sx={{ p: 3, maxWidth: 600, mx: 'auto', mt: 4 }}>
       
       <form onSubmit={handleSubmit}>
-        <TextField
-          label="Enter your text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          fullWidth
-          multiline
-          rows={1}
-          margin="normal"
-          variant="outlined"
-        />
+        <TextField label="Enter your text" value={inputText} onChange={(e) => setInputText(e.target.value)} fullWidth multiline rows={1} margin="normal" variant="outlined" />
         
         <Box sx={{ mt: 2, mb: 3 }}>
           <Button type="submit" variant="contained" color="primary">Update Text</Button>
         </Box>
       </form>
     </Paper>
-            <Box sx={{ mt: 4, display: 'flex', flexDirection: 'column', gap: 3 }}>
-                <Box>
-                    <Typography variant="subtitle2" gutterBottom>Debug Info:</Typography>
-                    <Typography variant="body2">Title: {title || 'missing'}</Typography>
-                    <Typography variant="body2">Category: {category || 'missing'}</Typography>
-                    <Typography variant="body2">Company: {company || 'missing'}</Typography>
-                    <Typography variant="body2">Product: {product || 'missing'}</Typography>
-                </Box>
+            <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 3 }}>
+                
 
-                <Button 
-                    variant="contained" 
-                    onClick={fetchData}
-                    disabled={loading || !title || !category || !company || !product}
-                >
+                <Button variant="contained" onClick={fetchData} disabled={loading || !title || !category || !company || !product}>
                     {loading ? 'Generating...' : 'Generate Ad'}
                 </Button>
 

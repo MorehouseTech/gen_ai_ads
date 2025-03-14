@@ -77,29 +77,8 @@ const AdPage = () => {
                 <Grid container spacing={2}>
                     {Object.entries(companyProducts).map(([company, products]) => (
                         <Grid item xs={12} key={company}>
-                            <Box sx={{ 
-                                display: 'flex', 
-                                alignItems: 'center', 
-                                gap: 2,
-                                bgcolor: 'rgba(255,255,255,0.05)',
-                                p: 2,
-                                borderRadius: 1,
-                                '&:hover': {
-                                    bgcolor: 'rgba(255,255,255,0.1)'
-                                }
-                            }}>
-                                <Avatar 
-                                    src={logoMapping[company as keyof typeof logoMapping]} 
-                                    sx={{ 
-                                        width: 60, 
-                                        height: 60, 
-                                        bgcolor: 'white', 
-                                        '& img': { 
-                                            objectFit: 'contain', 
-                                            p: 1 
-                                        } 
-                                    }} 
-                                />
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'rgba(255,255,255,0.05)', p: 2, borderRadius: 1, '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                                <Avatar src={logoMapping[company as keyof typeof logoMapping]} sx={{ width: 60, height: 60, bgcolor: 'white', '& img': { objectFit: 'contain', p: 1 } }} />
                                 <FormControl fullWidth size="small" sx={{ bgcolor: 'white', borderRadius: 1 }}>
                                     <Select
                                         value={selectedProducts[company as keyof typeof selectedProducts]}
