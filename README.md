@@ -2,7 +2,7 @@
 
 ## 🚀 Live Demo  
 Experience StreamSense in action:   
-https://morehousetech.github.io/gen_ai_ads/
+https://streamsenseai.com
 
 ## 📌 About  
 StreamSense is an AI-powered advertisement generation platform that allows users to create dynamic, customized ads based on selected streaming content, sponsors, and products. Built with **React and TypeScript**, StreamSense provides an intuitive and engaging experience with a modern **Material-UI (MUI) design**.  
