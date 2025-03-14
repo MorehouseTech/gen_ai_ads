@@ -5,14 +5,13 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
-import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
-import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
-
+import new1 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
+import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
 
 const Netflix = () => {
     const [videos, setVideos] = useState([
-        { id: 1, title: 'Avatar', image: gardenImage, category: 'Fantasy' },
-        { id: 2, title: 'Stranger Things', image: bathroomImage, category: 'Drama' }
+        { id: 1, title: 'Avatar', image: new1, category: 'Fantasy' },
+        { id: 2, title: 'Stranger Things', image: new2, category: 'Drama' }
     ]);
     
     const navigate = useNavigate();

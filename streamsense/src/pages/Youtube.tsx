@@ -23,10 +23,6 @@ const YouTube = () => {
     };
     
     const [activeCategory, setActiveCategory] = useState('All');
-    const categories = ['All', 'Gaming', 'Entertainment', 'Vlog'];
-    const menuItems = ['Home', 'Shorts', 'Subscriptions', 'YouTube Music'];
-    const secondaryMenuItems = ['History', 'Playlists', 'Your videos'];
-    const mainNavItems = ['Home', 'Videos', 'Shorts', 'Live', 'Playlists', 'Posts', 'Store'];
     
     const [searchQuery, setSearchQuery] = useState('');
 

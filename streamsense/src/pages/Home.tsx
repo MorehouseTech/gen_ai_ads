@@ -1,6 +1,7 @@
 import { Container, Box, Avatar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import huluLogo from '../assets/hulu.svg';
+
 import netflixLogo from '../assets/download.jpg'
 
 const Home = () => {
@@ -49,6 +50,8 @@ const Home = () => {
             >
                 {platforms.map((platform) => (
                     <Box 
+                        component={Link}
+                        to={platform.route}
                         key={platform.id}
                         sx={{
                             width: { xs: '40%', sm: '25%', md: '25%' },
