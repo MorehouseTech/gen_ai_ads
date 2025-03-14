@@ -6,6 +6,7 @@ import Youtube from './pages/Youtube';
 import './App.css';
 import Home from './pages/Home';
 import AdPage from './pages/AdPage';
+import PrimeVideo from './pages/PrimeVideo';
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Netflix" element={<Netflix />} />
       <Route path="/Hulu/:passed" element={<Hulu />} />
-      <Route path="/AIinfo/:title/:category/:company/:product" element={<AIinfo />} />
+      <Route path="/AIinfo/:title/:category" element={<AIinfo />} />
       <Route path="/Youtube" element={<Youtube />} />
-      <Route path="/AmazonPrime" element={<div>Amazon Prime Coming Soon</div>} />
+      <Route path="/AmazonPrime" element={<PrimeVideo />} />
       <Route path="/adPage/:title/:category" element={<AdPage />} />
     </Routes>
   );

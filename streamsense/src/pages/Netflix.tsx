@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import { Typography, Button, Box, IconButton, Container, Grid, AppBar, Toolbar, TextField } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Typography, Button, Box, IconButton, Container, Grid, AppBar, Toolbar } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import CloseIcon from '@mui/icons-material/Close';
-import new1 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
-import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
+import gardenImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
+import bathroomImage from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
+
 
 const Netflix = () => {
     const [videos, setVideos] = useState([
@@ -35,14 +34,25 @@ const Netflix = () => {
     }
 
     return (
-        
-        <Box sx={{ bgcolor: '#141414', minHeight: '100vh', width: '100%', color: 'white' }}>
+        <Box 
+            sx={{ 
+                bgcolor: '#141414', 
+                minHeight: '100vh', 
+                width: '100%', 
+                maxWidth: '100%',
+                color: 'white',
+                margin: 0,
+                padding: 0,
+                boxSizing: 'border-box',
+                overflow: 'hidden'
+            }}
+        >
             {/* Netflix Header */}
-            <button onClick={() => navigate('/')}> // Go back to platform selection
+            <button onClick={() => navigate('/')}> 
                 Go to Home
             </button>
-            <AppBar position="static" sx={{ bgcolor: 'transparent', boxShadow: 'none', py: 1 }}>
-                <Container maxWidth="xl">
+            <AppBar position="static" sx={{ bgcolor: 'transparent', boxShadow: 'none', py: 1, width: '100%' }}>
+                <Container maxWidth={false} sx={{ width: '100%' }}>
                     <Toolbar sx={{ justifyContent: 'space-between' }}>
                         {/* Left section with logo and navigation */}
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -72,7 +82,7 @@ const Netflix = () => {
             </AppBar>
 
             {/* Content Rows */}
-            <Container maxWidth="xl" sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)' }}>
+            <Container maxWidth={false} sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)', width: '100%' }}>
                 {groupedVideos.map((row, rowIndex) => (
                     <Box key={rowIndex} sx={{ mb: 4 }}>
                         <Typography variant="h6" sx={{ mb: 1, fontWeight: 'medium' }}>

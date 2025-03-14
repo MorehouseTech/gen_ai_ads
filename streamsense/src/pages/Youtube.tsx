@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Typography, Box, IconButton, Container, Grid, AppBar, Toolbar, } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -32,10 +32,22 @@ const YouTube = () => {
     );
 
     return (
-        <Box sx={{ bgcolor: '#fff', minHeight: '100vh', width: '100vw', color: 'black', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <Box 
+            sx={{ 
+                bgcolor: '#fff', 
+                minHeight: '100vh', 
+                width: '100%', 
+                maxWidth: '100%',
+                color: 'black', 
+                margin: 0,
+                padding: 0,
+                boxSizing: 'border-box',
+                overflow: 'hidden'
+            }}
+        >
             {/* YouTube Header */}
-            <AppBar position="static" sx={{ bgcolor: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', color: 'black' }}>
-                <Container maxWidth="xl">
+            <AppBar position="static" sx={{ bgcolor: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', color: 'black', width: '100%' }}>
+                <Container maxWidth={false} sx={{ width: '100%' }}>
                     <Toolbar sx={{ justifyContent: 'space-between', py: 0.5 }}>
                         {/* Left section with logo */}
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
