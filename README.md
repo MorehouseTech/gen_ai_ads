@@ -33,9 +33,9 @@ The judges can explore the live deployment and generate AI-powered advertisement
 3️⃣ **Generate Your AI-Powered Ad:**  
 - On the **generation screen**, locate the **text box**.  
 - Enter the following URL exactly as shown:  
-  ```
-  https://4f57-34-124-170-132.ngrok-free.app/generate
-  ```
+
+  [---[CLICK HERE FOR ENDPOINT URL]---](https://docs.google.com/document/d/1BK5QeFZEEeq3VseqZk4IRSCfcQBhCzIrG6PWW-IGl_0/edit?usp=sharing)
+  
 - Click **"Generate Ad"** and wait up to **2 minutes** for the AI to process and display the finished product.
 - Important: Two judges cannot use the AI at the same time so please be patient.
 
