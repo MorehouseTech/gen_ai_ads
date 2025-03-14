@@ -1,7 +1,7 @@
 # StreamSense - AI-Powered Ad Generation Platform  
 
 **Morehouse College**  
-Aren Egwuekwe, Ahmed Kiel-Kamil, Joshua Waters, Mark Ross Jeremy Samuel, Jaire Richadson, DayMond Johnson, Quentin Tucker
+Aren Egwuekwe, Ahmed Kiel-Kamil, Joshua Waters, Mark Ross, Jeremy Samuel, Jaire Richadson, DayMond Johnson, Quentin Tucker
 
 ## 🚀 Live Demo  
 Experience StreamSense in action:   
