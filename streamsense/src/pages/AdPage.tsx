@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Typography, Box, Button, Stack, Avatar, Select, MenuItem, FormControl, InputLabel, Grid } from '@mui/material';
+import { Container, Typography, Box, Grid, Avatar, Select, MenuItem, FormControl } from '@mui/material';
 import { useState } from 'react';
 import nflLogo from '../assets/newAssets/5th-NFL-logo.png';
 import bbyLogo from '../assets/newAssets/636596669293144926-BBY-on-blue-1 copy.png';
