@@ -4,6 +4,9 @@
 Experience StreamSense in action:   
 https://streamsenseai.com
 
+How to use the solution:  
+[Demo Video](https://drive.google.com/file/d/1DtkumyfkYV46BCr4kXzid3GMn-vKK3TW/view?usp=sharing)
+
 ## 📌 About  
 StreamSense is an AI-powered advertisement generation platform that allows users to create dynamic, customized ads based on selected streaming content, sponsors, and products. Built with **React and TypeScript**, StreamSense provides an intuitive and engaging experience with a modern **Material-UI (MUI) design**.  
 
@@ -30,7 +33,8 @@ The judges can explore the live deployment and generate AI-powered advertisement
   ```
   https://4f57-34-124-170-132.ngrok-free.app/generate
   ```
-- Click **"Generate Ad"** and wait up to **2 minutes** for the AI to process and display the finished product.  
+- Click **"Generate Ad"** and wait up to **2 minutes** for the AI to process and display the finished product.
+- Important: Two judges cannot use the AI at the same time so please be patient.
 
 📢 **Note:** The AI model runs exclusively on our backend and utilizes the **Flux.1 model from Hugging Face** for ad generation.  
 
