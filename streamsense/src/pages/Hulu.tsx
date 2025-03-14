@@ -1,5 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { keyframes } from '@mui/material/styles';
 import huluLogo from '../assets/Hulu-Logo.png';
+import huluBackground from '../assets/Hulu-Background.jpg';
 import { Box, Container, Typography, AppBar, Toolbar, Grid, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
@@ -10,9 +13,36 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import reactlogo from '../assets/react.svg';
 
+// Define a subtle zoom animation for the background
+const subtleZoom = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 const Hulu = () => {
     const { passed } = useParams();
     const navigate = useNavigate();
+    
+    // Use a high-quality background image URL
+    const backgroundImageUrl = "https://wallpapercave.com/wp/wp7634419.jpg"; // Hulu-themed dark background
+    
+    // Debug the background image loading
+    useEffect(() => {
+      console.log("Using background image URL:", backgroundImageUrl);
+      
+      // Create an image element to test loading
+      const img = new Image();
+      img.onload = () => console.log("Background image loaded successfully");
+      img.onerror = () => console.error("Failed to load background image");
+      img.src = backgroundImageUrl;
+    }, []);
     
     // Function to navigate to the ad page when clicking on a movie
     const handleNavigate = (title: string, category: string) => {
@@ -48,7 +78,6 @@ const Hulu = () => {
   return (
     <Box 
       sx={{ 
-        bgcolor: '#0B0C0F', 
         color: 'white', 
         minHeight: '100vh',
         width: '100%',
@@ -56,18 +85,56 @@ const Hulu = () => {
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        position: 'relative',
+        // Fallback background color and gradient
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
       }}
     >
+      {/* Full-screen background image */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `url(${backgroundImageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1,
+          opacity: 1,
+          animation: `${subtleZoom} 30s infinite ease-in-out`, // Slow, subtle zoom animation
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(11, 12, 15, 0.5)', // Even more reduced opacity
+            backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%)', // Add gradient overlay
+            zIndex: -1,
+          }
+        }}
+      />
+      
       <Container 
         maxWidth={false} 
         sx={{ 
           p: { xs: 1, md: 2 }, 
-          width: '100%'
+          width: '100%',
+          position: 'relative',
+          zIndex: 1
         }}
       >
         {/* Header */}
-        <AppBar position="static" sx={{ bgcolor: '#1E2126', boxShadow: 'none' }}>
+        <AppBar position="static" sx={{ 
+          bgcolor: 'rgba(30, 33, 38, 0.5)', 
+          backdropFilter: 'blur(10px)', // Add blur effect
+          boxShadow: 'none' 
+        }}>
           <Toolbar sx={{ justifyContent: 'space-between' }}>
             <Box sx={{ display: 'flex', gap: 3 }}>
               {headerIcons.map((item, index) => (
@@ -129,12 +196,13 @@ const Hulu = () => {
             <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
               <Box 
                 sx={{ 
-                  bgcolor: '#1E2126', 
+                  bgcolor: 'rgba(30, 33, 38, 0.7)', // More transparent background
                   borderRadius: 1, 
                   overflow: 'hidden',
                   transition: 'transform 0.3s',
                   cursor: 'pointer',
                   position: 'relative',
+                  backdropFilter: 'blur(5px)', // Add blur effect for glass-like appearance
                   '&:hover': { 
                     transform: 'scale(1.03)',
                     boxShadow: '0 0 15px rgba(0,0,0,0.3)',

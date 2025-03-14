@@ -24,10 +24,29 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  min-width: 100vw;
   min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #121212;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -66,3 +85,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Remove unnecessary YouTube-specific classes */

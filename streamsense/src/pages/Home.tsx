@@ -86,7 +86,7 @@ const Home = () => {
                     justifyContent: 'center',
                     bgcolor: '#121212',
                     color: 'white',
-                    px: { xs: 2, sm: 4 }
+                    p: 0
                 }}
             >
             <Typography 
