@@ -1,16 +1,23 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import huluLogo from '../assets/hululogo.png';
-import { Box, Container, Typography, AppBar, Toolbar, Grid } from '@mui/material';
+import { Box, Container, Typography, AppBar, Toolbar, Grid, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import reactlogo from '../assets/react.svg';
 
 const Hulu = () => {
     const { passed } = useParams();
+    const navigate = useNavigate();
+    
+    // Function to navigate to the ad page when clicking on a movie
+    const handleNavigate = (title: string, category: string) => {
+        navigate(`/adPage/${title}/${category}`);
+    };
   
   const categories = [
     'Trending', 'Top Rated', 'Action', 'Comedy', 
@@ -19,14 +26,14 @@ const Hulu = () => {
   ];
   
   const movies = [
-    { id: 1, title: 'Lorem Ipsum Dolor', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna vel...' },
-    { id: 2, title: 'Sit Amet Consectetur', image: reactlogo, description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad...' },
-    { id: 3, title: 'Adipiscing Elit', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu...' },
-    { id: 4, title: 'Nullam Euismod Magna', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...' },
-    { id: 5, title: 'Tempor Incididunt', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...' },
-    { id: 6, title: 'Ut Labore Et Dolore', image: reactlogo, description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip...' },
-    { id: 7, title: 'Magna Aliqua', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat...' },
-    { id: 8, title: 'Quis Nostrud', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...' },
+    { id: 1, title: 'Lorem Ipsum Dolor', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna vel...', category: 'Action' },
+    { id: 2, title: 'Sit Amet Consectetur', image: reactlogo, description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad...', category: 'Comedy' },
+    { id: 3, title: 'Adipiscing Elit', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu...', category: 'Horror' },
+    { id: 4, title: 'Nullam Euismod Magna', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...', category: 'Romance' },
+    { id: 5, title: 'Tempor Incididunt', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', category: 'Mystery' },
+    { id: 6, title: 'Ut Labore Et Dolore', image: reactlogo, description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip...', category: 'Sci-fi' },
+    { id: 7, title: 'Magna Aliqua', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat...', category: 'Western' },
+    { id: 8, title: 'Quis Nostrud', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...', category: 'Animation' },
   ];
 
   const headerIcons = [
@@ -103,16 +110,22 @@ const Hulu = () => {
       <Grid container spacing={2} sx={{ p: 2 }}>
         {movies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
-            <Box sx={{ 
-              bgcolor: '#1E2126', 
-              borderRadius: 1, 
-              overflow: 'hidden',
-              transition: 'transform 0.3s',
-              '&:hover': { 
-                transform: 'scale(1.03)',
-                boxShadow: '0 0 15px rgba(0,0,0,0.3)'
-              }
-            }}>
+            <Box 
+              sx={{ 
+                bgcolor: '#1E2126', 
+                borderRadius: 1, 
+                overflow: 'hidden',
+                transition: 'transform 0.3s',
+                cursor: 'pointer',
+                position: 'relative',
+                '&:hover': { 
+                  transform: 'scale(1.03)',
+                  boxShadow: '0 0 15px rgba(0,0,0,0.3)',
+                  '& .play-button': { opacity: 1 }
+                }
+              }}
+              onClick={() => handleNavigate(movie.title, movie.category)}
+            >
               <Box 
                 component="img" 
                 src={movie.image} 
@@ -128,12 +141,36 @@ const Hulu = () => {
                   target.src = 'https://via.placeholder.com/300x180?text=Movie';
                 }}
               />
+              {/* Play button overlay that appears on hover */}
+              <Box 
+                className="play-button"
+                sx={{ 
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(0,0,0,0.3)',
+                  opacity: 0,
+                  transition: 'opacity 0.3s'
+                }}
+              >
+                <IconButton sx={{ color: 'white', bgcolor: 'rgba(255,255,255,0.2)', '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' } }}>
+                  <PlayArrowIcon />
+                </IconButton>
+              </Box>
               <Box sx={{ p: 2 }}>
                 <Typography variant="body2" sx={{ color: '#ccc', mb: 1 }}>
                   {movie.description}
                 </Typography>
                 <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                   {movie.title}
+                </Typography>
+                <Typography variant="caption" sx={{ color: '#aaa', display: 'block', mt: 0.5 }}>
+                  {movie.category}
                 </Typography>
               </Box>
             </Box>

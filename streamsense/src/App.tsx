@@ -14,7 +14,7 @@ function App() {
       <Route path="/Netflix" element={<Netflix />} />
       <Route path="/Hulu/:passed" element={<Hulu />} />
       <Route path="/AIinfo/:title/:category" element={<AIinfo />} />
-      <Route path="/Youtube" element={<div>YouTube Coming Soon</div>} />
+      <Route path="/Youtube" element={<Youtube />} />
       <Route path="/AmazonPrime" element={<div>Amazon Prime Coming Soon</div>} />
       <Route path="/adPage/:title/:category" element={<AdPage />} />
       <Route path="/AIinfo/:title/:category/:company" element={<AIinfo />} />
