@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Typography, Box, IconButton, Container, Grid, AppBar, Toolbar, } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -16,6 +16,23 @@ const YouTube = () => {
         { id: 3, title: 'I got a cat.', image: new1, category: 'Vlog', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'LifeUpdates' },
         { id: 4, title: 'They put me in a video game...', image: new2, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife' }
     ]);
+    
+    // Override body background color to ensure entire page is white
+    useEffect(() => {
+        // Save the original background color
+        const originalBodyBg = document.body.style.backgroundColor;
+        const originalHtmlBg = document.documentElement.style.backgroundColor;
+        
+        // Set white background for the entire page
+        document.body.style.backgroundColor = '#ffffff';
+        document.documentElement.style.backgroundColor = '#ffffff';
+        
+        // Restore original background color when component unmounts
+        return () => {
+            document.body.style.backgroundColor = originalBodyBg;
+            document.documentElement.style.backgroundColor = originalHtmlBg;
+        };
+    }, []);
     
     const navigate = useNavigate();
     const handleNavigate = (title: string, category: string) => {
@@ -38,15 +55,21 @@ const YouTube = () => {
     return (
         <Box 
             sx={{ 
-                bgcolor: '#fff', 
+                bgcolor: '#ffffff', 
                 minHeight: '100vh', 
-                width: '100%', 
+                width: '100vw', // Use viewport width to ensure full width
                 maxWidth: '100%',
                 color: 'black', 
                 margin: 0,
                 padding: 0,
                 boxSizing: 'border-box',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                position: 'fixed', // Fix position to cover the entire viewport
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1 // Ensure it's above any other elements
             }}
         >
             {/* YouTube Header */}
