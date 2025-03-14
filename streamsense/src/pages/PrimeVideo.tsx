@@ -12,12 +12,9 @@ import {
   Card, 
   CardMedia, 
   CardContent,
-  useTheme,
-  useMediaQuery,
   Paper
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import reactLogo from '../assets/react.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -28,55 +25,74 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AmazonLogo from '../assets/Amazon-Logo.png';
 import CloseIcon from '@mui/icons-material/Close';
 
+// Import images using URL constructor for more reliable path resolution
+const n1 = new URL('../assets/primevideo-images/n1.jpg', import.meta.url).href;
+const n2 = new URL('../assets/primevideo-images/n2.jpg', import.meta.url).href;
+const n3 = new URL('../assets/primevideo-images/n3.jpg', import.meta.url).href;
+const n4 = new URL('../assets/primevideo-images/n4.jpg', import.meta.url).href;
+const n5 = new URL('../assets/primevideo-images/n5.jpg', import.meta.url).href;
+const n6 = new URL('../assets/primevideo-images/n6.jpg', import.meta.url).href;
+const n7 = new URL('../assets/primevideo-images/n7.jpg', import.meta.url).href;
+const n8 = new URL('../assets/primevideo-images/n8.jpg', import.meta.url).href;
+const n9 = new URL('../assets/primevideo-images/n9.jpg', import.meta.url).href;
+const n10 = new URL('../assets/primevideo-images/n10.jpg', import.meta.url).href;
+const n11 = new URL('../assets/primevideo-images/n11.jpg', import.meta.url).href;
+const n12 = new URL('../assets/primevideo-images/n12.jpg', import.meta.url).href;
+
 const PrimeVideo = () => {
   const [tabValue, setTabValue] = useState(0);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const navigate = useNavigate();
-  const [showMasthead, setShowMasthead] = useState(true);
+  const [showMastheadUI, setShowMastheadUI] = useState(true);
   
   // Function to navigate to the ad page when clicking on a show
   const handleNavigate = (title: string, category: string) => {
     navigate(`/adPage/${title}/${category}`);
   };
 
-  // Sample data
+  // Payed for featured content and Masthead Ad
   const featuredContent = {
     title: 'DARK WINDS',
     description: 'Season 3 • Leaphorn and Chee investigate a disappearance while Manuelito uncovers a mystery on the border.',
-    imageUrl: 'https://m.media-amazon.com/images/S/pv-target-images/598f0978830fc82f5b90201a5eb16f32e0fe9f71e4ef24ca4e9ccc0c4b896a00._UR1920,1080_SX720_FMjpg_.jpg',
+    imageUrl: n6,
     channel: 'AMC+',
     rating: 'TV-14',
     newEpisode: 'New episode Sunday',
-    category: 'Drama'
+    category: 'Drama',
+    releaseYear: 2020
   };
 
   const mastheadShow = {
     title: 'THE BOYS',
     description: "Season 4 • The world is on the brink. Victoria Neuman is closer than ever to the Oval Office and under Homelander's thumb. Butcher, with only months to live, has lost Becca's son and his job as The Boys' leader.",
-    imageUrl: 'https://m.media-amazon.com/images/S/pv-target-images/d0608779ce9da50fe7aa269e02c7c442344a5f6450b3b4dd2059765704cba3d2._UR1920,1080_SX720_FMjpg_.jpg',
+    imageUrl: n7,
     releaseDate: 'New episodes every Thursday',
     category: 'Action',
-    rating: 'TV-MA'
+    rating: 'TV-MA',
+    releaseYear: 2019
   };
 
-  const recommendedShows = [
-    { id: 1, title: 'Invincible', imageUrl: reactLogo, category: 'Animation' },
-    { id: 2, title: 'Secret Level', imageUrl: reactLogo, category: 'Sci-Fi' },
-    { id: 3, title: 'JoJo\'s Bizarre Adventure', imageUrl: reactLogo, category: 'Anime' },
-    { id: 4, title: 'The Legend of Vox Machina', imageUrl: reactLogo, category: 'Fantasy' },
-    { id: 5, title: 'Fallout', imageUrl: reactLogo, category: 'Action' }
+  const allRecommendedShows = [
+    { id: 1, title: 'Invincible', imageUrl: n1, category: 'Animation', releaseYear: 2021 },
+    { id: 2, title: 'Secret Level', imageUrl: n2, category: 'Sci-Fi', releaseYear: 2023 },
+    { id: 3, title: 'JoJo\'s Bizarre Adventure', imageUrl: n3, category: 'Anime', releaseYear: 2012 },
+    { id: 4, title: 'The Legend of Vox Machina', imageUrl: n4, category: 'Fantasy', releaseYear: 2022 },
+    { id: 5, title: 'Fallout', imageUrl: n5, category: 'Action', releaseYear: 2024 }
   ];
 
-  const seriesSpotlight = [
-    { id: 1, title: 'Reacher', imageUrl: reactLogo, category: 'Action' },
-    { id: 2, title: 'Wallace & Gromit', imageUrl: reactLogo, category: 'Animation' },
-    { id: 3, title: 'American Gods', imageUrl: reactLogo, category: 'Fantasy' },
-    { id: 4, title: 'Spongebob Squarepants', imageUrl: reactLogo, category: 'Kids' },
-    { id: 5, title: 'The Rings of Power', imageUrl: reactLogo, category: 'Fantasy' }
+  const allSeriesSpotlight = [
+    { id: 1, title: 'Reacher', imageUrl: n8, category: 'Action', releaseYear: 2022 },
+    { id: 2, title: 'Wallace & Gromit', imageUrl: n9, category: 'Animation', releaseYear: 1989 },
+    { id: 3, title: 'American Gods', imageUrl: n10, category: 'Fantasy', releaseYear: 2017 },
+    { id: 4, title: 'Spongebob Squarepants', imageUrl: n11, category: 'Kids', releaseYear: 1999 },
+    { id: 5, title: 'The Rings of Power', imageUrl: n12, category: 'Fantasy', releaseYear: 2022 }
   ];
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  // Filter out shows made after 2020 since model is trained on 2020 and earlier
+  const recommendedShows = allRecommendedShows.filter(show => show.releaseYear <= 2020);
+  const seriesSpotlight = allSeriesSpotlight.filter(show => show.releaseYear <= 2020);
+  const shouldShowMasthead = mastheadShow.releaseYear <= 2020;
+
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
 
@@ -260,7 +276,7 @@ const PrimeVideo = () => {
       </AppBar>
 
       {/* Masthead TV Show Preview */}
-      {showMasthead && (
+      {showMastheadUI && shouldShowMasthead && (
         <Paper 
           elevation={0}
           sx={{ 
@@ -408,7 +424,7 @@ const PrimeVideo = () => {
               zIndex: 3,
               '&:hover': { bgcolor: 'rgba(0,0,0,0.7)' }
             }}
-            onClick={() => setShowMasthead(false)}
+            onClick={() => setShowMastheadUI(false)}
           >
             <CloseIcon fontSize="small" />
           </IconButton>

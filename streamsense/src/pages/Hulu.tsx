@@ -1,8 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { keyframes } from '@mui/material/styles';
 import huluLogo from '../assets/Hulu-Logo.png';
-import huluBackground from '../assets/Hulu-Background.jpg';
 import { Box, Container, Typography, AppBar, Toolbar, Grid, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
@@ -11,9 +10,19 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import reactlogo from '../assets/react.svg';
 
-// Define a subtle zoom animation for the background
+// Import background image using URL constructor for more reliable path resolution
+const backgroundImage = new URL('../assets/Hulu-Background.jpg', import.meta.url).href;
+
+const h1 = new URL('../assets/hulu-images/h1.jpg', import.meta.url).href;
+const h2 = new URL('../assets/hulu-images/h2.jpg', import.meta.url).href;
+const h3 = new URL('../assets/hulu-images/h3.jpg', import.meta.url).href;
+const h4 = new URL('../assets/hulu-images/h4.jpg', import.meta.url).href;
+const h5 = new URL('../assets/hulu-images/h5.jpg', import.meta.url).href;
+const h6 = new URL('../assets/hulu-images/h6.jpg', import.meta.url).href; 
+const h7 = new URL('../assets/hulu-images/h7.jpg', import.meta.url).href;
+const h8 = new URL('../assets/hulu-images/h8.jpg', import.meta.url).href;
+
 const subtleZoom = keyframes`
   0% {
     transform: scale(1);
@@ -30,8 +39,8 @@ const Hulu = () => {
     const { passed } = useParams();
     const navigate = useNavigate();
     
-    // Use a high-quality background image URL
-    const backgroundImageUrl = "https://wallpapercave.com/wp/wp7634419.jpg"; // Hulu-themed dark background
+    // Use the background image URL directly
+    const backgroundImageUrl = backgroundImage;
     
     // Debug the background image loading
     useEffect(() => {
@@ -56,15 +65,18 @@ const Hulu = () => {
   ];
   
   const movies = [
-    { id: 1, title: 'Lorem Ipsum Dolor', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna vel...', category: 'Action' },
-    { id: 2, title: 'Sit Amet Consectetur', image: reactlogo, description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad...', category: 'Comedy' },
-    { id: 3, title: 'Adipiscing Elit', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu...', category: 'Horror' },
-    { id: 4, title: 'Nullam Euismod Magna', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...', category: 'Romance' },
-    { id: 5, title: 'Tempor Incididunt', image: reactlogo, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', category: 'Mystery' },
-    { id: 6, title: 'Ut Labore Et Dolore', image: reactlogo, description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip...', category: 'Sci-fi' },
-    { id: 7, title: 'Magna Aliqua', image: reactlogo, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat...', category: 'Western' },
-    { id: 8, title: 'Quis Nostrud', image: reactlogo, description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt...', category: 'Animation' },
+    { id: 1, title: "The Handmaid's Tale", image: h1, description: "Based on Margaret Atwood's novel, this award-winning dystopian drama has been a flagship Hulu Original since 2017.", category: 'Drama', releaseYear: 2017 },
+    { id: 2, title: "Marvel's Runaways", image: h2, description: "A group of teens discover their parents belong to a criminal organization with dark secrets. It's a teen-focused Marvel series that ran for three seasons.", category: 'Sci-fi', releaseYear: 2017 },
+    { id: 3, title: "Future Man", image: h3, description: "A sci-fi comedy about a janitor (Josh Hutcherson) recruited by time travelers to save the world. Executive-produced by Seth Rogen and Evan Goldberg.", category: 'Comedy', releaseYear: 2017 },
+    { id: 4, title: "Castle Rock", image: h4, description: "A psychological horror anthology series set in the Stephen King multiverse, weaving together elements of his classic stories and settings.", category: 'Horror', releaseYear: 2018 },
+    { id: 5, title: "The Mindy Project", image: h5, description: "Created by and starring Mindy Kaling, this comedic series about an OB/GYN juggling her personal and professional life originally premiered on Fox before moving to Hulu.", category: 'Comedy', releaseYear: 2012 },
+    { id: 6, title: "Brooklyn Nine-Nine", image: h6, description: "The beloved police comedy with ensemble cast led by Andy Samberg. Hulu has carried many of its past seasons.", category: 'Comedy', releaseYear: 2013 },
+    { id: 7, title: "Ramy", image: h7, description: "Starring and created by Ramy Youssef, this dramedy explores faith, family, and identity as a first-generation Egyptian American living in New Jersey.", category: 'Drama', releaseYear: 2019 },
+    { id: 8, title: "Veronica Mars", image: h8, description: "The cult-favorite teen detective series starring Kristen Bell. Hulu revived it for a fourth season in 2019, and it continues to host the earlier seasons as well.", category: 'Mystery', releaseYear: 2004 },
   ];
+
+  // Filter out movies made after 2020
+  const filteredMovies = movies.filter(movie => movie.releaseYear <= 2020);
 
   const headerIcons = [
     { icon: HomeIcon, label: 'Home', active: true },
@@ -192,7 +204,7 @@ const Hulu = () => {
 
         {/* Movies Grid */}
         <Grid container spacing={2} sx={{ p: 2 }}>
-          {movies.map((movie) => (
+          {filteredMovies.map((movie) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
               <Box 
                 sx={{ 

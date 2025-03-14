@@ -57,7 +57,7 @@ const Home = () => {
     const getAnimationDelay = (id: number) => {
         if (hoveredId === null) return 0;
         const distance = Math.abs(id - hoveredId);
-        return distance * 0.1; // delay based on distance from hovered item
+        return distance * 0.1; 
     };
 
     return (
@@ -115,8 +115,6 @@ const Home = () => {
             >
                 {platforms.map((platform) => (
                     <Box 
-                        component={Link}
-                        to={platform.route}
                         key={platform.id}
                         onMouseEnter={() => setHoveredId(platform.id)}
                         onMouseLeave={() => setHoveredId(null)}

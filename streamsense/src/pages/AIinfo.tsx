@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { Container, Typography, Box, TextField, Button } from '@mui/material';
-import { useState, useEffect } from 'react'
+import { Container, Typography, Box, Button } from '@mui/material';
+import { useState } from 'react'
 
 
 const AIinfo = () => {

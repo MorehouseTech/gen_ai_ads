@@ -3,16 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { Typography, Button, Box, IconButton, Container, Grid, AppBar, Toolbar } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import CloseIcon from '@mui/icons-material/Close';
 import new1 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.34 PM.png';
 import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
 
 
 const Netflix = () => {
-    const [videos, setVideos] = useState([
-        { id: 1, title: 'Avatar', image: new1, category: 'Fantasy' },
-        { id: 2, title: 'Stranger Things', image: new2, category: 'Drama' }
+    const [videos] = useState([
+        { id: 1, title: 'Avatar', image: new1, category: 'Fantasy', releaseYear: 2009 },
+        { id: 2, title: 'Stranger Things', image: new2, category: 'Drama', releaseYear: 2016 }
     ]);
+    
+    // Filter out videos made after 2020
+    const filteredVideos = videos.filter(video => video.releaseYear <= 2020);
     
     const navigate = useNavigate();
     const handleNavigate = (title: string, category: string) => {
@@ -20,18 +22,18 @@ const Netflix = () => {
     };
     const [activeCategory, setActiveCategory] = useState('All');
     const categories = ['All', 'Fantasy', 'Drama'];
-    const [searchOpen, setSearchOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [] = useState(false);
+    const [searchQuery] = useState('');
 
-    const filteredVideos = videos.filter(video => 
+    const filteredByCategory = filteredVideos.filter(video => 
         (activeCategory === 'All' || video.category === activeCategory) &&
         (searchQuery === '' || video.title.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
     // Group videos by row (3 per row)
     const groupedVideos = [];
-    for (let i = 0; i < filteredVideos.length; i += 3) {
-        groupedVideos.push(filteredVideos.slice(i, i + 3));
+    for (let i = 0; i < filteredByCategory.length; i += 3) {
+        groupedVideos.push(filteredByCategory.slice(i, i + 3));
     }
 
     return (
