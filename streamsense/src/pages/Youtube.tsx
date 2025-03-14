@@ -11,9 +11,9 @@ import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 4.51.05 PM.png';
 const YouTube = () => {
     const [videos] = useState([
         { id: 1, title: 'I went to the Pokemon Cafe!', image: new3, category: 'Entertainment', views: '2.8M', timeAgo: '13 days ago', duration: '7:41', channel: 'PokemonFan', releaseYear: 2019 },
-        { id: 2, title: 'I played Pokemon, but with 50+ New Types', image: new4, category: 'Gaming', views: '7.6M', timeAgo: '2 months ago', duration: '31:39', channel: 'GameMaster', releaseYear: 2022 },
+        { id: 2, title: 'I played Pokemon, but with 50+ New Types', image: new4, category: 'Gaming', views: '7.6M', timeAgo: '2 months ago', duration: '31:39', channel: 'GameMaster', releaseYear: 2020 },
         { id: 3, title: 'I got a cat.', image: new1, category: 'Vlog', views: '19M', timeAgo: '4 months ago', duration: '16:09', channel: 'LifeUpdates', releaseYear: 2020 },
-        { id: 4, title: 'They put me in a video game...', image: new2, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife', releaseYear: 2021 }
+        { id: 4, title: 'They put me in a video game...', image: new2, category: 'Gaming', views: '3.8M', timeAgo: '5 months ago', duration: '5:02', channel: 'GamerLife', releaseYear: 2020}
     ]);
     
     // Filter out videos made after 2020
