@@ -72,7 +72,7 @@ const AdPage = () => {
 
     return (
         <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="h4" sx={{ textAlign: 'center', mb: 4, mt: 2 }}>Pick the company you want to see an ad for</Typography>
+            <Typography variant="h4" sx={{ color: 'white', textAlign: 'center', mb: 4, mt: 2 }}>Pick the company you want to see an ad for</Typography>
             <Box sx={{ bgcolor: '#141414', width: '100%', color: 'white', p: 4, borderRadius: 2 }}>
                 <Grid container spacing={2}>
                     {Object.entries(companyProducts).map(([company, products]) => (

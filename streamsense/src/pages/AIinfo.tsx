@@ -91,7 +91,7 @@ const AIinfo = () => {
                 </Button>
 
                 {loading && (
-                    <Typography>Loading...</Typography>
+                    <Typography>Please wait while we generate the ad... (It may take up to a minute)</Typography>
                 )}
 
                 {error && (
