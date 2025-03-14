@@ -40,7 +40,11 @@ const AdPage = () => {
 
     const handleNavigate = (title: string | undefined, category: string | undefined, company: string, product: string) => {
         if (title && category) {
-            navigate(`/AIinfo/${title}/${category}/${company}/${product}`);
+            const encodedTitle = encodeURIComponent(title);
+            const encodedCategory = encodeURIComponent(category);
+            const encodedCompany = encodeURIComponent(company);
+            const encodedProduct = encodeURIComponent(product);
+            navigate(`/AIinfo/${encodedTitle}/${encodedCategory}/${encodedCompany}/${encodedProduct}`);
         }
     };
 
@@ -49,6 +53,11 @@ const AdPage = () => {
             ...prev,
             [company]: value
         }));
+        
+        // Only navigate if we have all required parameters
+        if (title && category) {
+            handleNavigate(title, category, company, value);
+        }
     };
 
     const companyProducts = {
@@ -85,10 +94,7 @@ const AdPage = () => {
                             <FormControl size="small" sx={{ minWidth: 120, bgcolor: 'white', borderRadius: 1 }}>
                                 <Select
                                     value={selectedProducts[company as keyof typeof selectedProducts]}
-                                    onChange={(e) => {
-                                        handleProductChange(company, e.target.value);
-                                        handleNavigate(title, category, company, e.target.value);
-                                    }}
+                                    onChange={(e) => handleProductChange(company, e.target.value)}
                                     displayEmpty
                                 >
                                     <MenuItem value="" disabled>Select {company}</MenuItem>
