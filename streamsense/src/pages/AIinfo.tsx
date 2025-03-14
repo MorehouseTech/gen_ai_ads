@@ -58,10 +58,10 @@ const AIinfo = () => {
              <Paper elevation={3} sx={{ p: 3, maxWidth: 600, mx: 'auto', mt: 4 }}>
       
       <form onSubmit={handleSubmit}>
-        <TextField label="Enter your text" value={inputText} onChange={(e) => setInputText(e.target.value)} fullWidth multiline rows={1} margin="normal" variant="outlined" />
+        <TextField label="Enter the link to the endpoint (Check README.md for more info)" value={inputText} onChange={(e) => setInputText(e.target.value)} fullWidth multiline rows={1} margin="normal" variant="outlined" />
         
         <Box sx={{ mt: 2, mb: 3 }}>
-          <Button type="submit" variant="contained" color="primary">Update Text</Button>
+          <Button type="submit" variant="contained" color="primary">Add endpoint </Button>
         </Box>
       </form>
     </Paper>
