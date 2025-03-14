@@ -9,10 +9,10 @@ import new2 from '../assets/newAssets/Screen Shot 2025-03-13 at 2.03.57 PM.png';
 
 
 const Netflix = () => {
-    const [videos, setVideos] = useState([
+    const videos = [
         { id: 1, title: 'Avatar', image: new1, category: 'Fantasy' },
         { id: 2, title: 'Stranger Things', image: new2, category: 'Drama' }
-    ]);
+    ];
     
     const navigate = useNavigate();
     const handleNavigate = (title: string, category: string) => {
