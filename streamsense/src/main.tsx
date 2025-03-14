@@ -2,13 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { BrowserRouter, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import '@fontsource/roboto/300.css';
 import Netflix from './pages/Netflix.tsx'
 import AIinfo from './pages/AIinfo.tsx'
 import AdPage from './pages/AdPage.tsx' 
 import Hulu from './pages/Hulu.tsx'
 import Youtube from './pages/Youtube.tsx'
+import PrimeVideo from './pages/PrimeVideo.tsx'
 //router imports
 
 const router = createBrowserRouter([
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
       element: <Hulu />
     },
     {
-      path: "/AIinfo/:title/:category/:company",
+      path: "/Hulu/:passed",
+      element: <Hulu />
+    },
+    {
+      path: "/AIinfo/:title/:category/:company/:product",
       element: <AIinfo />
     },
     {
@@ -35,13 +40,15 @@ const router = createBrowserRouter([
     {
       path: "/Youtube",
       element: <Youtube />
+    },
+    {
+      path: "/AmazonPrime",
+      element: <PrimeVideo />
     }
-
 ]);
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </StrictMode>,
 )

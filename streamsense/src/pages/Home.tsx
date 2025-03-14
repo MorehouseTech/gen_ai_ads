@@ -115,6 +115,8 @@ const Home = () => {
             >
                 {platforms.map((platform) => (
                     <Box 
+                        component={Link}
+                        to={platform.route}
                         key={platform.id}
                         onMouseEnter={() => setHoveredId(platform.id)}
                         onMouseLeave={() => setHoveredId(null)}

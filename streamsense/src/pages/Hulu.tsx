@@ -46,7 +46,7 @@ const Hulu = () => {
     
     // Function to navigate to the ad page when clicking on a movie
     const handleNavigate = (title: string, category: string) => {
-        navigate(`/adPage/${title}/${category}`);
+        navigate(`/AdPage/${title}/${category}`);
     };
   
   const categories = [
@@ -158,14 +158,12 @@ const Hulu = () => {
           </Toolbar>
         </AppBar>
 
-        {/* Welcome message that uses the route parameter */}
-        {passed && (
-          <Box sx={{ p: 2, textAlign: 'center' }}>
-            <Typography variant="h5">
-              Welcome to Hulu {passed === 'home' ? 'Home' : passed}
-            </Typography>
-          </Box>
-        )}
+        {/* Welcome message */}
+        <Box sx={{ p: 2, textAlign: 'center' }}>
+          <Typography variant="h5">
+            Welcome to Hulu {passed ? (passed === 'home' ? 'Home' : passed) : 'Home'}
+          </Typography>
+        </Box>
         
         {/* Navigation Categories */}
         <Box sx={{ 

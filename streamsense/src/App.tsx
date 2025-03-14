@@ -13,12 +13,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Netflix" element={<Netflix />} />
-      <Route path="/Hulu/:passed" element={<Hulu />} />
+      <Route path="/Hulu" element={<Hulu />} />
       <Route path="/AIinfo/:title/:category" element={<AIinfo />} />
       <Route path="/Youtube" element={<Youtube />} />
       <Route path="/AmazonPrime" element={<PrimeVideo />} />
       <Route path="/adPage/:title/:category" element={<AdPage />} />
-      <Route path="/AIinfo/:title/:category/:company" element={<AIinfo />} />
     </Routes>
   );
 }

@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Typography, Box, Button, Stack, Avatar } from '@mui/material';
+import { Container, Typography, Box, Button, Stack, Avatar, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { useState } from 'react';
 import nflLogo from '../assets/newAssets/5th-NFL-logo.png';
 import bbyLogo from '../assets/newAssets/636596669293144926-BBY-on-blue-1 copy.png';
 import amazonLogo from '../assets/newAssets/Amazon-Emblema.png';
@@ -11,25 +12,102 @@ import dellLogo from '../assets/newAssets/dell-logo-transparent-free-png.webp';
 import hebLogo from '../assets/newAssets/png-transparent-red-logo-heb-mexico-grocery-store-industrial-design-text-line-area-thumbnail.png';
 
 const AdPage = () => {
-  
     const { title, category } = useParams();
     const navigate = useNavigate();
-    const handleNavigate = (title: string, category: string, company: string) => {
-      navigate(`/AIinfo/${title}/${category}/${company}`);
-  };
+    const [selectedProducts, setSelectedProducts] = useState({
+        NFL: '',
+        BestBuy: '',
+        Amazon: '',
+        Cisco: '',
+        Ebay: '',
+        HomeDepot: '',
+        Thrivent: '',
+        Dell: '',
+        HEB: ''
+    });
+
+    const logoMapping = {
+        NFL: nflLogo,
+        BestBuy: bbyLogo,
+        Amazon: amazonLogo,
+        Cisco: ciscoLogo,
+        Ebay: ebayLogo,
+        HomeDepot: homeDepotLogo,
+        Thrivent: thriventLogo,
+        Dell: dellLogo,
+        HEB: hebLogo
+    };
+
+    const handleNavigate = (title: string | undefined, category: string | undefined, company: string, product: string) => {
+        if (title && category) {
+            const encodedTitle = encodeURIComponent(title);
+            const encodedCategory = encodeURIComponent(category);
+            const encodedCompany = encodeURIComponent(company);
+            const encodedProduct = encodeURIComponent(product);
+            navigate(`/AIinfo/${encodedTitle}/${encodedCategory}/${encodedCompany}/${encodedProduct}`);
+        }
+    };
+
+    const handleProductChange = (company: string, value: string) => {
+        setSelectedProducts(prev => ({
+            ...prev,
+            [company]: value
+        }));
+        
+        // Only navigate if we have all required parameters
+        if (title && category) {
+            handleNavigate(title, category, company, value);
+        }
+    };
+
+    const companyProducts = {
+        NFL: ['Tickets', 'Merchandise', 'Game Pass'],
+        BestBuy: ['Electronics', 'Appliances', 'Gaming'],
+        Amazon: ['Prime', 'Electronics', 'Books'],
+        Cisco: ['Networking', 'Security', 'Cloud'],
+        Ebay: ['Auctions', 'Buy Now', 'Deals'],
+        HomeDepot: ['Tools', 'Garden', 'Home Improvement'],
+        Thrivent: ['Insurance', 'Investment', 'Banking'],
+        Dell: ['Laptops', 'Desktops', 'Servers'],
+        HEB: ['Groceries', 'Pharmacy', 'Curbside']
+    };
+
     return (
-        <Container maxWidth="md">
-            <Stack direction="row" spacing={2} sx={{ mt: 4, flexWrap: 'wrap', gap: 2 }}>
-                <Avatar src={nflLogo} onClick={() => handleNavigate(title, category, "NFL")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={bbyLogo} onClick={() => handleNavigate(title, category, "Best Buy")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={amazonLogo} onClick={() => handleNavigate(title, category, "Amazon")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={ciscoLogo} onClick={() => handleNavigate(title, category, "Cisco")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={ebayLogo} onClick={() => handleNavigate(title, category, "Ebay")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={homeDepotLogo} onClick={() => handleNavigate(title, category, "Home Depot")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={thriventLogo} onClick={() => handleNavigate(title, category, "Thrivent")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={dellLogo} onClick={() => handleNavigate(title, category, "Dell")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-                <Avatar src={hebLogo} onClick={() => handleNavigate(title, category, "HEB")} sx={{ width: 56, height: 56, cursor: 'pointer' }}/>
-            </Stack>
+        <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ bgcolor: '#141414', minHeight: '50vh', width: '100%', color: 'white', mb: 2, p: 4 }}>
+                <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: 4, display: 'flex', justifyContent: 'center' }}>
+                    {Object.entries(companyProducts).map(([company, products]) => (
+                        <Box key={company} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                            <Avatar 
+                                src={logoMapping[company as keyof typeof logoMapping]} 
+                                sx={{ 
+                                    width: 80, 
+                                    height: 80, 
+                                    cursor: 'pointer', 
+                                    bgcolor: 'white', 
+                                    '& img': { 
+                                        objectFit: 'contain', 
+                                        p: 1 
+                                    } 
+                                }} 
+                            />
+                            <FormControl size="small" sx={{ minWidth: 120, bgcolor: 'white', borderRadius: 1 }}>
+                                <Select
+                                    value={selectedProducts[company as keyof typeof selectedProducts]}
+                                    onChange={(e) => handleProductChange(company, e.target.value)}
+                                    displayEmpty
+                                >
+                                    <MenuItem value="" disabled>Select {company}</MenuItem>
+                                    {products.map((product) => (
+                                        <MenuItem key={product} value={product}>{product}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    ))}
+                </Stack>
+            </Box>
+            <Typography variant="h4" sx={{ textAlign: 'center' }}>Pick the company you want to see an ad for</Typography>
         </Container>
     );
 };
