@@ -19,7 +19,7 @@ StreamSense is an AI-powered advertisement generation platform that allows users
 ## 🛠️ Technology Stack  
 - **Frontend:** React 19, TypeScript, Vite, Material-UI (MUI), React Router DOM  
 - **Backend:** Flask, Ngrok  
-- **AI Model:** Flux.1 from Hugging Face for image generation  
+- **AI Model:** Black Foreset Labs Flux.1 Diffusion Model
 - **Deployment:** GitHub Pages (Frontend), Ngrok (Backend API)  
 
 ## 🎯 How to Use StreamSense  
